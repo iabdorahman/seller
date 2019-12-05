@@ -21,7 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('image')->default('user.png'); // default user image if not set by the user
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->foreign('user_type_id')->references('id')->on('user_type'); // retrieve the admin type from 'user_type' table
+            $table->unsignedBigInteger('user_type_id'); // retrieve the admin type from 'user_type' table
+            $table->foreign('user_type_id')->references('id')->on('user_type'); 
             $table->rememberToken();
             $table->timestamps();
         });
