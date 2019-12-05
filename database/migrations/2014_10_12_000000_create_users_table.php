@@ -17,8 +17,11 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email')->unique();
+            $table->integer('mobile_number')->unique()->nullable(); // mobile number can be empty but it's unique too.
+            $table->string('image')->default('user.png'); // default user image if not set by the user
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->bigIncrements('user_type_id'); // retrieve the admin type from 'user_type' table
             $table->rememberToken();
             $table->timestamps();
         });
