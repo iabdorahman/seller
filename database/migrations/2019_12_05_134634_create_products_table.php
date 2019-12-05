@@ -19,8 +19,8 @@ class CreateProductsTable extends Migration
             $table->string('image');
             $table->longText('details');
             $table->integer('price');
-            $table->bigIncrements('category_id');
-            $table->bigIncrements('user_id');
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
